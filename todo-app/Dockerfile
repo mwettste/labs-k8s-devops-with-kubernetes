@@ -9,7 +9,8 @@ RUN go mod download && go build -o app /app/todo-app.go
 
 FROM alpine:latest
 WORKDIR /app/
-COPY --from=builder /app/ /app/
+COPY --from=builder /app/app .
+COPY index.html .
 ENV PORT=8080
 
 CMD ./app
