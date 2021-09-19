@@ -14,8 +14,10 @@ spec:
     spec:
       containers:
       - name: guidlogger
-        image: wettsti/guid-logger:0.1
+        image: wettsti/guid-logger:0.4
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
+        ports:
+        - containerPort: 8081

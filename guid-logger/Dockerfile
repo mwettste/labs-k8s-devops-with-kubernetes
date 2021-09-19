@@ -12,4 +12,6 @@ FROM alpine:latest
 WORKDIR /app
 COPY --from=builder /app/app /app/
 
+ENV PORT=8081
+
 CMD ./app
