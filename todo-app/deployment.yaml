@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: todoapp
-        image: wettsti/todo-app:0.1
+        image: wettsti/todo-app:0.2
         resources:
           limits:
             memory: "128Mi"
