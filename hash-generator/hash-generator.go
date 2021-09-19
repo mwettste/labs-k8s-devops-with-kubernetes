@@ -3,12 +3,17 @@ package main
 import (
 	"crypto/md5"
 	"fmt"
+	"os"
+	"os/signal"
+	"syscall"
 	"time"
 )
 
 func main() {
 	ticker := time.NewTicker(3000 * time.Millisecond)
 	done := make(chan bool)
+	quitChan := make(chan os.Signal, 1)
+	signal.Notify(quitChan, syscall.SIGINT, syscall.SIGTERM)
 
 	go func() {
 		for {
@@ -21,7 +26,7 @@ func main() {
 		}
 	}()
 
-	fmt.Scanln()
+	<-quitChan
 	ticker.Stop()
 	done <- true
 	fmt.Println("program ending...")
